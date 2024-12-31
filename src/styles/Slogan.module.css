@@ -1,4 +1,22 @@
 .homeImage {
-  height: 125vh;
+  height: 100vh;
   opacity: 0.9;
+  display: flex;
+  flex-direction: column; /* Ensure flexibility for inner content */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .homeImage {
+    height: 50vh;
+    background-size: contain; /* Adjust the background scaling */
+  }
+}
+
+@media (max-width: 480px) {
+  .homeImage {
+    height: 40vh;
+    background-size: contain;
+    background-position: top; /* Adjust the position for smaller screens */
+  }
 }

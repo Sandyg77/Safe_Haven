@@ -1,8 +1,11 @@
+import { Card } from "react-bootstrap";
+
 const Favourites = () => {
   return (
-    <div>
-      <p>My favourites component</p>
-    </div>
+    <Card style={{ width: "35 rem" }}>
+      <Card.Header>Favourites 💖</Card.Header>
+      <Card.Body>This is my favourites section</Card.Body>
+    </Card>
   );
 };
 
