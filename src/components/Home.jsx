@@ -3,7 +3,7 @@
 }
 
 function Home() {
-  return <h1>Helllo This is my home component</h1>;
+  return <h1>Hello This is my home component</h1>;
 }
 
 export default Home;
