@@ -1,8 +1,8 @@
 const FilterButtons = () => {
   return (
     <div>
-      <button>For rent</button>
-      <button>To sale</button>
+      <button className="btn btn-dark">For rent</button>
+      <button className="btn btn-dark">To sale</button>
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Properties = () => {
   const properties = propertyData.properties;
 
   return (
-    <Card style={{ width: "50rem" }}>
+    <Card style={{ width: "40rem" }}>
       <Card.Header>Available Properties 🏡</Card.Header>
       <Card.Body>
         <br />
@@ -14,25 +14,31 @@ const Properties = () => {
         {properties &&
           properties.map((property) => {
             return (
-              <div className="box" key={property.id}>
-                <p>
+              <Card className="mt-2 mb-4 ms-1 me-3 p-4">
+                <div key={property.id}>
+                  <div className="d-flex">
+                    <img
+                      src={property.picture}
+                      alt={`Property ${property.id}`}
+                      className="img-fluid w-50"
+                    />{" "}
+                    {/* bootstrap class used to make image responsive */}
+                  </div>
                   <br />
-                  <strong>Type: {property.type}</strong>
-                </p>
-                <p>Price: ${property.price}</p>
-                <p>Location: {property.location}</p>
-                <p>
-                  Added: {property.added.day} {property.added.month}{" "}
-                  {property.added.year}
-                </p>
-                <img
-                  src={property.picture}
-                  alt={`Property ${property.id}`}
-                  className="img-fluid"
-                />{" "}
-                {/* bootstrap class used to make image responsivw */}
-                <button className="btn btn-dark">Add to Favourites</button>
-              </div>
+                  <p>
+                    <strong>Type: {property.type}</strong>
+                  </p>
+                  <p>Price: ${property.price}</p>
+                  <p>Location: {property.location}</p>
+                  <p>
+                    Added: {property.added.day} {property.added.month}{" "}
+                    {property.added.year}
+                  </p>
+                  <button className="btn btn-dark mt-3">
+                    Add to Favourites
+                  </button>
+                </div>
+              </Card>
             );
           })}
       </Card.Body>

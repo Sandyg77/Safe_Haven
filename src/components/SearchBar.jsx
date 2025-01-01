@@ -23,7 +23,7 @@ const SearchBar = () => {
       {/* Advanced search button */}
       <div className="row text-center mb-3">
         <div className="col-12">
-          <button className="btn btn-primary" onClick={toggleAdvancedSearch}>
+          <button className="btn btn-dark" onClick={toggleAdvancedSearch}>
             {showAdvancedSearch
               ? "Hide Advanced Search"
               : "Show Advanced Search"}
@@ -60,7 +60,7 @@ const SearchBar = () => {
                 placeholder="Enter number of bedrooms..."
               />
             </div>
-            <button className="btn btn-success">Search</button>
+            <button className="btn btn-dark">Search</button>
           </div>
         </div>
       )}
