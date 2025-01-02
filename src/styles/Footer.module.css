@@ -1,0 +1,46 @@
+.footer {
+  background-color: #031b4c;
+  color: #fff;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.backToTop {
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #fcfcfc;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.backToTop:hover {
+  background-color: #000000;
+  color: white;
+}
+
+.section {
+  margin: 20px 0;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: rgb(103, 147, 181);
+}
+
+.copyright {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
