@@ -10,19 +10,11 @@ import SearchBar from "./SearchBar";
 const Home = () => {
   return (
     <div className="container mt-4">
-      <div className="row align-items-center mb-4">
-        <div className="col-md-6">
-          <SearchBar />
-        </div>
-        <div className="col-md-6 text-end">
-          <FilterButtons />
-        </div>
-      </div>
       <div className="row">
-        <div className="col-md-6 mb-4">
+        <div className="col-md-3 mb-4">
           <Favourites />
         </div>
-        <div className="col-md-6 mb-4">
+        <div className="col-md-9 mb-4 d-flex justify-content-end">
           <Properties />
         </div>
       </div>

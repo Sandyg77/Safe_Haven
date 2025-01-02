@@ -1,22 +1,27 @@
-.homeImage {
-  height: 100vh;
-  opacity: 0.9;
-  display: flex;
-  flex-direction: column; /* Ensure flexibility for inner content */
+.slogan {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: fadeInUp 10s ease-in-out infinite;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .homeImage {
-    height: 50vh;
-    background-size: contain; /* Adjust the background scaling */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
   }
-}
-
-@media (max-width: 480px) {
-  .homeImage {
-    height: 40vh;
-    background-size: contain;
-    background-position: top; /* Adjust the position for smaller screens */
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -40%);
   }
 }

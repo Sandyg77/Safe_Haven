@@ -19,3 +19,8 @@ body {
 .siteName {
   margin-top: 15px;
 }
+
+.view-property {
+  float: right;
+  display: flex;
+}
