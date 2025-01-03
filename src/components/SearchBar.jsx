@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../styles/SearchForm.module.css";
 
 const SearchBar = () => {
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -12,11 +13,7 @@ const SearchBar = () => {
       {/* Search bar */}
       <div className="row mb-3">
         <div className="col-12 col-md-3 mx-auto">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search properties by type..."
-          />
+          <input type="text" placeholder="Search properties by type..." />
         </div>
       </div>
 
@@ -40,7 +37,7 @@ const SearchBar = () => {
               <label>Price Range:</label>
               <input
                 type="text"
-                className="form-control"
+                className={styles.formControl}
                 placeholder="Enter price range..."
               />
             </div>
@@ -48,7 +45,7 @@ const SearchBar = () => {
               <label>Location:</label>
               <input
                 type="text"
-                className="form-control"
+                className={styles.formControl}
                 placeholder="Enter location..."
               />
             </div>
@@ -56,7 +53,7 @@ const SearchBar = () => {
               <label>Number of Bedrooms:</label>
               <input
                 type="number"
-                className="form-control"
+                className={styles.formControl}
                 placeholder="Enter number of bedrooms..."
               />
             </div>

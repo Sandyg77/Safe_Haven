@@ -21,7 +21,7 @@ const Favourites = ({ favourites, setFavourites }) => {
   };
 
   return (
-    <Card style={{ width: "25rem", height: "245rem" }}>
+    <Card style={{ width: "25rem", height: "100rem" }}>
       <Card.Header>Favourites 💖</Card.Header>
       <Card.Body
         onDrop={handleDrop} // Trigger handleDrop when an item is dropped

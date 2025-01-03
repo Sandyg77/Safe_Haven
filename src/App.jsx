@@ -1,17 +1,16 @@
-import Home from "./components/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/Navbar";
-import Slogan from "./components/Slogan";
-import Footer from "./components/Footer";
+import DetailedProperty from "./pages/DetailedProperty";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Slogan />
-      <Home />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/property/:id" element={<DetailedProperty />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
