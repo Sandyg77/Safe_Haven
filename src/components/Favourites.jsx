@@ -1,5 +1,6 @@
 import { Card } from "react-bootstrap";
 import FavProperty from "./FavProperty";
+import { FaTrashCan } from "react-icons/fa6";
 
 const Favourites = ({ favourites, setFavourites }) => {
   // Handling drop event
@@ -27,6 +28,11 @@ const Favourites = ({ favourites, setFavourites }) => {
     setFavourites(favourites.filter((fav) => fav.id !== propertyId));
   };
 
+  // Clear all button
+  const clearAll = () => {
+    setFavourites([]); // Reset favourites to an empty array
+  };
+
   return (
     <Card
       style={{
@@ -37,11 +43,21 @@ const Favourites = ({ favourites, setFavourites }) => {
       }}
     >
       <div className="row">
-        <h3 className="col-6">Favourites</h3>{" "}
+        <h3 className="col-6 ps-3">
+          <b>Favourites</b>
+        </h3>{" "}
         <div className="col-6 d-flex flex-row-reverse">
-          <button type="button" className="btn btn-sm btn-dark m-1">
-            Clear All
-          </button>
+          <FaTrashCan
+            onClick={clearAll}
+            style={{
+              cursor: "pointer",
+              fontSize: "1.5rem",
+              color: "#031b4c",
+              marginRight: "10px",
+              marginTop: "10px",
+            }}
+            title="Clear All"
+          />
         </div>
       </div>
       <Card.Body

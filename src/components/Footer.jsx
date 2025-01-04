@@ -2,18 +2,9 @@ import React from "react";
 import styles from "../styles/Footer.module.css";
 
 const Footer = () => {
-  const handleBackToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* Back to Top Button */}
-        <button className={styles.backToTop} onClick={handleBackToTop}>
-          Back to Top
-        </button>
-
         {/* About Us */}
         <div className={styles.section}>
           <h3>About Us</h3>
@@ -36,8 +27,13 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className={styles.copyright}>
-          <p>© {new Date().getFullYear()} SafeHaven. All Rights Reserved.</p>
+        <div className={styles.section}>
+          <h3>Follow Us</h3>
+          <p>
+            Facebook <br />
+            Twitter <br />
+            Instagram
+          </p>
         </div>
       </div>
     </footer>

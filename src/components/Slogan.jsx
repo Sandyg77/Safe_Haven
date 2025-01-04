@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../styles/Slogan.module.css";
-import FilterButtons from "./FilterButtons";
 
 const Slogan = () => {
   return (
@@ -8,7 +7,8 @@ const Slogan = () => {
       <img
         src="Home2.jpg"
         alt="slog"
-        className="img-fluid position-absolute top-0 start-50 translate-middle-x w-75 h-100 object-fit-cover"
+        className="img-fluid position-absolute top-0 start-50 translate-middle-x h-100 object-fit-cover"
+        style={{ minWidth: "100%", borderRadius: "15px" }}
       />
       <div className={styles.slogan}>"Trust Us to Find Your Safe Haven."</div>
 

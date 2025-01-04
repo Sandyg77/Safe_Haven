@@ -1,5 +1,5 @@
 .slogan {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -8,7 +8,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  animation: fadeInUp 10s ease-in-out infinite;
+  animation: fadeInUp 15s ease-in-out infinite;
+  text-align: center;
 }
 
 @keyframes fadeInUp {

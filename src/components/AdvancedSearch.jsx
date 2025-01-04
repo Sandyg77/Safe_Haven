@@ -1,60 +1,39 @@
 import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap"; // Added Card and Button from Bootstrap
+import { DatePicker, NumberPicker, Combobox } from "react-widgets";
+import "react-widgets/styles.css";
 
 const AdvancedSearch = ({ onSearch }) => {
   const [criteria, setCriteria] = useState({
     type: "",
-    minPrice: "",
-    maxPrice: "",
-    minBedrooms: "",
-    maxBedrooms: "",
-    dateAdded: "",
+    minPrice: null,
+    maxPrice: null,
+    minBedrooms: null,
+    maxBedrooms: null,
+    dateAdded: null,
     postcode: "",
   });
 
   const [showForm, setShowForm] = useState(false); // State to toggle form visibility
 
-  // Handle input change
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setCriteria((prevCriteria) => ({
-      ...prevCriteria,
-      [name]: value,
-    }));
-  };
-
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Parse numerical values for validation
-    const parsedCriteria = {
-      ...criteria,
-      minPrice: criteria.minPrice ? parseFloat(criteria.minPrice) : null,
-      maxPrice: criteria.maxPrice ? parseFloat(criteria.maxPrice) : null,
-      minBedrooms: criteria.minBedrooms
-        ? parseInt(criteria.minBedrooms, 10)
-        : null,
-      maxBedrooms: criteria.maxBedrooms
-        ? parseInt(criteria.maxBedrooms, 10)
-        : null,
-      dateAdded: criteria.dateAdded ? new Date(criteria.dateAdded) : null,
-    };
-
     // Validate ranges
     if (
-      (parsedCriteria.minPrice &&
-        parsedCriteria.maxPrice &&
-        parsedCriteria.minPrice > parsedCriteria.maxPrice) ||
-      (parsedCriteria.minBedrooms &&
-        parsedCriteria.maxBedrooms &&
-        parsedCriteria.minBedrooms > parsedCriteria.maxBedrooms)
+      (criteria.minPrice &&
+        criteria.maxPrice &&
+        criteria.minPrice > criteria.maxPrice) ||
+      (criteria.minBedrooms &&
+        criteria.maxBedrooms &&
+        criteria.minBedrooms > criteria.maxBedrooms)
     ) {
       alert("Minimum values cannot be greater than maximum values.");
       return;
     }
 
-    onSearch(parsedCriteria);
+    onSearch(criteria);
   };
 
   return (
@@ -77,81 +56,93 @@ const AdvancedSearch = ({ onSearch }) => {
           style={{ maxWidth: "500px", padding: "10px" }}
         >
           <Card.Body>
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={handleSubmit}
+              id="advancedSearch"
+              name="advancedSearch"
+            >
               <div className="mb-3">
-                <label className="form-label">Type:</label>
-                <input
-                  type="text"
-                  name="type"
-                  className="form-control"
+                <label for="advancedSearch">Type:</label>
+                <Combobox
+                  data={["House", "Flat", "Bungalow", "Apartment"]}
                   value={criteria.type}
-                  onChange={handleInputChange}
+                  onChange={(value) =>
+                    setCriteria((prev) => ({ ...prev, type: value }))
+                  }
+                  placeholder="Select a property type..."
+                  id="type"
+                  name="type"
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Min Price:</label>
-                <input
-                  type="number"
-                  name="minPrice"
-                  className="form-control"
+                <label>Min Price:</label>
+                <NumberPicker
+                  placeholder="Select min price..."
                   value={criteria.minPrice}
-                  min="0"
-                  onChange={handleInputChange}
+                  onChange={(value) =>
+                    setCriteria((prev) => ({ ...prev, minPrice: value }))
+                  }
+                  min={0}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Max Price:</label>
-                <input
-                  type="number"
-                  name="maxPrice"
-                  className="form-control"
+                <label>Max Price:</label>
+                <NumberPicker
+                  placeholder="Select max price..."
                   value={criteria.maxPrice}
-                  min="0"
-                  onChange={handleInputChange}
+                  onChange={(value) =>
+                    setCriteria((prev) => ({ ...prev, maxPrice: value }))
+                  }
+                  min={0}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Min Bedrooms:</label>
-                <input
-                  type="number"
-                  name="minBedrooms"
-                  className="form-control"
+                <label>Min Bedrooms:</label>
+                <NumberPicker
+                  placeholder="Select min bedrooms..."
                   value={criteria.minBedrooms}
-                  min="0"
-                  onChange={handleInputChange}
+                  onChange={(value) =>
+                    setCriteria((prev) => ({ ...prev, minBedrooms: value }))
+                  }
+                  min={0}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Max Bedrooms:</label>
-                <input
-                  type="number"
-                  name="maxBedrooms"
-                  className="form-control"
+                <label>Max Bedrooms:</label>
+                <NumberPicker
+                  placeholder="Select max bedrooms..."
                   value={criteria.maxBedrooms}
-                  min="0"
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="mb-">
-                <label className="form-label">Date Added:</label>
-                <input
-                  type="date"
-                  name="dateAdded"
-                  className="form-control"
-                  min="2022-01-01"
-                  max="2024-12-31"
-                  value={criteria.dateAdded}
-                  onChange={handleInputChange}
+                  onChange={(value) =>
+                    setCriteria((prev) => ({ ...prev, maxBedrooms: value }))
+                  }
+                  min={0}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Postcode:</label>
+                <label>Date Added:</label>
+                <DatePicker
+                  value={criteria.dateAdded}
+                  onChange={(value) =>
+                    setCriteria((prev) => ({ ...prev, dateAdded: value }))
+                  }
+                  placeholder="Select a date..."
+                />
+              </div>
+              <div className="mb-3">
+                <label for="postcode">Postcode:</label>
                 <input
                   type="text"
                   name="postcode"
-                  className="form-control"
+                  id="postcode"
+                  placeholder=""
+                  className="form-control" // bootstrap class
                   value={criteria.postcode}
-                  onChange={handleInputChange}
+                  onChange={(e) =>
+                    setCriteria((prev) => ({
+                      ...prev,
+                      postcode: e.target.value,
+                    }))
+                  }
                 />
               </div>
               <div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Properties from "../components/Properties";
 import Favourites from "../components/Favourites";
 import Navbar from "../components/Navbar";
@@ -8,7 +8,12 @@ import AdvancedSearch from "../components/AdvancedSearch";
 
 // Home component to manage state and render the other components
 const Home = () => {
-  const [favourites, setFavourites] = useState([]); // State to hold all favourite properties
+  var initialState = JSON.parse(localStorage.getItem("favourites")) ?? []; // Nullish coalescing operator
+  const [favourites, setFavourites] = useState(initialState); // State to hold all favourite properties
+
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
 
   // Function to add a property to the favourites list
   const addToFavourites = (property) => {
@@ -25,11 +30,11 @@ const Home = () => {
         <Slogan />
         <br /> <br />
         <div className="row justify-content-around">
-          <div className="col-4">
+          <div className="col-lg-4 col-sm-12">
             <Favourites favourites={favourites} setFavourites={setFavourites} />{" "}
             {/* Pass favourites list to Favourites component */}
           </div>
-          <div className="col-8">
+          <div className="col-lg-8 col-sm-12">
             <Properties
               onAddToFavourites={addToFavourites}
               favourites={favourites}

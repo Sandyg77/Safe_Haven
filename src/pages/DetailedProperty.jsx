@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import propertyData from "../data/properties.json";
 import ImageGallery from "react-image-gallery";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -21,6 +21,9 @@ const DetailedProperty = () => {
 
   return (
     <div className="container mt-4" style={{ marginBottom: "50px" }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <button className="btn btn-dark    mb-3">Back to Home</button>
+      </Link>
       <h1>{property.type}</h1>
       <p>
         <b>Price:</b> ${property.price}
@@ -40,12 +43,16 @@ const DetailedProperty = () => {
       {/* Tabs */}
       <Tabs>
         <TabList>
+          {" "}
+          {/* Displays the clickable tabs  */}
           <Tab>Description</Tab>
           <Tab>Floorplan</Tab>
           <Tab>Google Map</Tab>
         </TabList>
 
         <TabPanel>
+          {" "}
+          {/*Panels corresponding to each tab */}
           <h2>Property Description</h2>
           <p>{property.description}</p>
         </TabPanel>
