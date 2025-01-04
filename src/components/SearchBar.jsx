@@ -1,66 +1,35 @@
 import React, { useState } from "react";
-import styles from "../styles/SearchForm.module.css";
+import { FaSearch } from "react-icons/fa"; // Import FontAwesome search icon
 
-const SearchBar = () => {
-  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const toggleAdvancedSearch = () => {
-    setShowAdvancedSearch(!showAdvancedSearch);
+  // Handle input change
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Call onSearch when search is performed
+  const handleSearch = () => {
+    onSearch(searchTerm);
   };
 
   return (
-    <div className="container my-4">
-      {/* Search bar */}
-      <div className="row mb-3">
-        <div className="col-12 col-md-3 mx-auto">
-          <input type="text" placeholder="Search properties by type..." />
-        </div>
-      </div>
-
-      {/* Advanced search button */}
-      <div className="row text-center mb-3">
-        <div className="col-12">
-          <button className="btn btn-dark" onClick={toggleAdvancedSearch}>
-            {showAdvancedSearch
-              ? "Hide Advanced Search" // Using ternary operator
-              : "Show Advanced Search"}
-          </button>
-        </div>
-      </div>
-
-      {/* Advanced search dropdown */}
-      {showAdvancedSearch && (
-        <div className="row">
-          <div className="col-12 col-md-8 mx-auto p-3 border rounded">
-            <h5>Advanced Search Options</h5>
-            <div className="form-group mb-3">
-              <label>Price Range:</label>
-              <input
-                type="text"
-                className={styles.formControl}
-                placeholder="Enter price range..."
-              />
-            </div>
-            <div className="form-group mb-3">
-              <label>Location:</label>
-              <input
-                type="text"
-                className={styles.formControl}
-                placeholder="Enter location..."
-              />
-            </div>
-            <div className="form-group mb-3">
-              <label>Number of Bedrooms:</label>
-              <input
-                type="number"
-                className={styles.formControl}
-                placeholder="Enter number of bedrooms..."
-              />
-            </div>
-            <button className="btn btn-dark">Search</button>
-          </div>
-        </div>
-      )}
+    <div className="input-group">
+      <input
+        type="text"
+        placeholder="Search properties by type or postcode..."
+        value={searchTerm}
+        onChange={handleInputChange}
+        className="form-control"
+      />
+      <span
+        className="input-group-text"
+        onClick={handleSearch}
+        style={{ cursor: "pointer" }}
+      >
+        <FaSearch />
+      </span>
     </div>
   );
 };

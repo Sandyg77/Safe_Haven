@@ -15,10 +15,7 @@ const Slogan = () => {
       <div
         className="position-absolute start-50 translate-middle-x d-flex gap-3"
         style={{ top: "65%" }}
-      >
-        <button className="btn btn-light p-2">For Rent</button>
-        <button className="btn btn-light p-2">To Sale</button>
-      </div>
+      ></div>
     </div>
   );
 };

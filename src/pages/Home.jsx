@@ -4,6 +4,7 @@ import Favourites from "../components/Favourites";
 import Navbar from "../components/Navbar";
 import Slogan from "../components/Slogan";
 import Footer from "../components/Footer";
+import AdvancedSearch from "../components/AdvancedSearch";
 
 // Home component to manage state and render the other components
 const Home = () => {
@@ -23,13 +24,17 @@ const Home = () => {
       <div className="container mt-4">
         <Slogan />
         <br /> <br />
-        <div className="row">
-          <div className="col-md-2 mb-4">
+        <div className="row justify-content-around">
+          <div className="col-4">
             <Favourites favourites={favourites} setFavourites={setFavourites} />{" "}
             {/* Pass favourites list to Favourites component */}
           </div>
-          <div className="col-md-9 mb-4">
-            <Properties onAddToFavourites={addToFavourites} />{" "}
+          <div className="col-8">
+            <Properties
+              onAddToFavourites={addToFavourites}
+              favourites={favourites}
+              setFavourites={setFavourites}
+            />{" "}
             {/* Pass addToFavourites function to Properties */}
           </div>
         </div>

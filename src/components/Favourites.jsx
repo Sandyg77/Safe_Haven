@@ -1,4 +1,5 @@
 import { Card } from "react-bootstrap";
+import FavProperty from "./FavProperty";
 
 const Favourites = ({ favourites, setFavourites }) => {
   // Handling drop event
@@ -12,6 +13,12 @@ const Favourites = ({ favourites, setFavourites }) => {
     }
   };
 
+  const handleDragStart = (e, property) => {
+    console.log("Start", e);
+    console.log("Start", property);
+    e.dataTransfer.setData("removeProperty", JSON.stringify(property)); // Pass property as JSON
+  };
+
   // Preventing default drag over
   const handleDragOver = (e) => e.preventDefault();
 
@@ -21,8 +28,22 @@ const Favourites = ({ favourites, setFavourites }) => {
   };
 
   return (
-    <Card style={{ width: "25rem", height: "100rem" }}>
-      <Card.Header>Favourites 💖</Card.Header>
+    <Card
+      style={{
+        width: "auto",
+        maxHeight: "800px",
+        overflowY: "scroll",
+        overflowX: "hidden",
+      }}
+    >
+      <div className="row">
+        <h3 className="col-6">Favourites</h3>{" "}
+        <div className="col-6 d-flex flex-row-reverse">
+          <button type="button" className="btn btn-sm btn-dark m-1">
+            Clear All
+          </button>
+        </div>
+      </div>
       <Card.Body
         onDrop={handleDrop} // Trigger handleDrop when an item is dropped
         onDragOver={handleDragOver} // Allow dragging over component
@@ -32,22 +53,11 @@ const Favourites = ({ favourites, setFavourites }) => {
           <p>Drag properties here to add to favourites.</p>
         ) : (
           favourites.map((property) => (
-            <div key={property.id} className="mb-3">
-              <img
-                src={property.picture}
-                alt={`Property ${property.id}`}
-                className="img-fluid w-50 me-3"
-              />
-              <span>
-                {property.type} - ${property.price}
-              </span>
-              <button
-                className="btn btn-danger btn-sm ms-2 mt-5"
-                onClick={() => handleRemove(property.id)} // Button to remove property from favourites
-              >
-                Remove
-              </button>
-            </div>
+            <FavProperty
+              onRemove={handleRemove}
+              prop={property}
+              onHandleDrag={handleDragStart}
+            />
           ))
         )}
       </Card.Body>
