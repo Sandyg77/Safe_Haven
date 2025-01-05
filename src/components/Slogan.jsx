@@ -3,7 +3,10 @@ import styles from "../styles/Slogan.module.css";
 
 const Slogan = () => {
   return (
-    <div className="position-relative w-100" style={{ height: "60vh" }}>
+    <div
+      className="position-relative w-100"
+      style={{ height: "60vh" }} // Height is set to 60% of the viewport for responsiveness
+    >
       <img
         src="Home2.jpg"
         alt="slog"

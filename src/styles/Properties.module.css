@@ -1,12 +1,11 @@
 /* Styling for the main card container */
 .cardContainer {
-  width: 35rem; /* Slightly smaller card width */
-  margin: 0 auto; /* Center the card container */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 10px; /* Rounded corners */
+  width: 35rem;
+  margin: 0 auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-/* Header of the card */
 .cardHeader {
   font-size: 1.25rem;
   font-weight: bold;
@@ -16,7 +15,6 @@
   padding: 1rem;
 }
 
-/* Individual property card styling */
 .card {
   width: 80%;
   border: 1px solid #ccc;
@@ -25,21 +23,18 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover effect for the property card */
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Card content spacing and alignment */
 .cardContent {
   padding: 1rem;
   text-align: left;
 }
 
-/* Property image styling */
 .propertyImage {
-  width: 100%; /* Larger image */
+  width: 100%;
   height: auto;
   border-radius: 5px;
   margin-bottom: 1rem;

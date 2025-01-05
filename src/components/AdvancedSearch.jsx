@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap"; // Added Card and Button from Bootstrap
+import { Card, Button } from "react-bootstrap";
 import { DatePicker, NumberPicker, Combobox } from "react-widgets";
 import "react-widgets/styles.css";
 
 const AdvancedSearch = ({ onSearch }) => {
+  // State to manage search criteria
   const [criteria, setCriteria] = useState({
     type: "",
     minPrice: null,
@@ -16,11 +17,10 @@ const AdvancedSearch = ({ onSearch }) => {
 
   const [showForm, setShowForm] = useState(false); // State to toggle form visibility
 
-  // Handle form submission
+  // Handle form submission and validation
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate ranges
     if (
       (criteria.minPrice &&
         criteria.maxPrice &&
@@ -40,7 +40,6 @@ const AdvancedSearch = ({ onSearch }) => {
     <div
       style={{ textAlign: "center", marginBottom: "10px", marginTop: "30px" }}
     >
-      {/* Centered Toggle Button */}
       <Button
         variant="dark"
         onClick={() => setShowForm((prev) => !prev)}
@@ -49,7 +48,6 @@ const AdvancedSearch = ({ onSearch }) => {
         {showForm ? "Hide Advanced Search" : "Show Advanced Search"}
       </Button>
 
-      {/* Form inside a Card */}
       {showForm && (
         <Card
           className="mx-auto"
@@ -64,8 +62,8 @@ const AdvancedSearch = ({ onSearch }) => {
               <div className="mb-3">
                 <label for="advancedSearch">Type:</label>
                 <Combobox
-                  data={["House", "Flat", "Bungalow", "Apartment"]}
-                  value={criteria.type}
+                  data={["House", "Flat", "Bungalow", "Detached Bungalow"]}
+                  value={criteria.type} // Set selected value
                   onChange={(value) =>
                     setCriteria((prev) => ({ ...prev, type: value }))
                   }
@@ -134,7 +132,7 @@ const AdvancedSearch = ({ onSearch }) => {
                   type="text"
                   name="postcode"
                   id="postcode"
-                  placeholder=""
+                  placeholder="Select postcode..."
                   className="form-control" // bootstrap class
                   value={criteria.postcode}
                   onChange={(e) =>

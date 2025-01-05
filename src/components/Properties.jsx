@@ -4,18 +4,20 @@ import propertyData from "../data/properties.json";
 import styles from "../styles/Properties.module.css";
 import { Link } from "react-router-dom";
 import AdvancedSearch from "./AdvancedSearch";
-import SearchBar from "./SearchBar"; // Import the SearchBar component
+import SearchBar from "./SearchBar";
 
 const Properties = ({ onAddToFavourites, favourites, setFavourites }) => {
-  // Accessing the properties array from the JSON data
+  // State to manage filtered properties
   const [filteredProperties, setFilteredProperties] = useState(
     propertyData.properties
   );
 
+  // Handle the drop event for removing properties from favourites
   const handleDrop = (e) => {
-    e.preventDefault(); // prevents the defauult handling of drop event
+    e.preventDefault();
     const removedProp = JSON.parse(e.dataTransfer.getData("removeProperty")); // To retrieve the dropped property data
     if (favourites.length > 0) {
+      // Update favourites by removing the dropped property
       setFavourites(
         favourites.filter(function (prop) {
           return prop.id !== removedProp.id;
@@ -29,17 +31,17 @@ const Properties = ({ onAddToFavourites, favourites, setFavourites }) => {
     e.dataTransfer.setData("property", JSON.stringify(property)); // Pass property as JSON
   };
 
-  // Handling the button add to favourites
+  // Handle adding a property to favourites
   const handleAddToFavourites = (property) => {
     onAddToFavourites(property); // Add the property to favourites
   };
 
-  // Preventing default drag over
   const handleDragOver = (e) => e.preventDefault();
 
-  // Filter properties based on search criteria
+  // Handle advanced search filtering based on criteria
   const handleSearch = (criteria) => {
     const filtered = propertyData.properties.filter((property) => {
+      // Check if the property's type matches the type in the criteria.
       const matchesType = criteria.type
         ? property.type.toLowerCase().includes(criteria.type.toLowerCase())
         : true;
@@ -54,11 +56,11 @@ const Properties = ({ onAddToFavourites, favourites, setFavourites }) => {
         : true;
       const matchesPostcode = criteria.postcode
         ? property.location
-            .toLowerCase()
+            .toLowerCase() // Convert to lowercase for case-insensitive comparison
             .includes(criteria.postcode.toLowerCase())
         : true;
 
-      // Combine all criteria
+      // Combine all criteria using logical AND to ensure the property matches all conditions.
       return (
         matchesType &&
         matchesPrice &&
@@ -91,8 +93,8 @@ const Properties = ({ onAddToFavourites, favourites, setFavourites }) => {
   return (
     <div onDrop={handleDrop} onDragOver={handleDragOver}>
       {/* Search Components */}
-      <SearchBar onSearch={handleSimpleSearch} /> {/* Simple Search Bar */}
-      <AdvancedSearch onSearch={handleSearch} /> {/* Advanced Search */}
+      <SearchBar onSearch={handleSimpleSearch} />
+      <AdvancedSearch onSearch={handleSearch} />
       <h1 style={{ marginBottom: "60px" }}>
         <strong>Available Properties</strong>
       </h1>
@@ -108,7 +110,7 @@ const Properties = ({ onAddToFavourites, favourites, setFavourites }) => {
                 className={`${styles.card} col-xl-5 col-md-12 me-3 mb-3`}
                 key={property.id}
                 draggable
-                onDragStart={(e) => handleDragStart(e, property)} // Attach the function drag handler to the entire property card
+                onDragStart={(e) => handleDragStart(e, property)}
               >
                 <div className={styles.cardContent}>
                   <img
@@ -129,7 +131,7 @@ const Properties = ({ onAddToFavourites, favourites, setFavourites }) => {
                   </p>
                   <button
                     className="btn btn-dark mt-3"
-                    onClick={() => handleAddToFavourites(property)} // Manually add property to favourites
+                    onClick={() => handleAddToFavourites(property)}
                   >
                     Add to Favourites
                   </button>

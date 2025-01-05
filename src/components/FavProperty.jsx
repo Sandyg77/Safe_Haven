@@ -1,12 +1,13 @@
 import { Card } from "react-bootstrap";
 
+// Fav card child component
 const FavProperty = ({ onRemove, prop, onHandleDrag }) => {
   return (
     <Card
       key={prop.id}
       className="mb-3"
       draggable
-      onDragStart={(e) => onHandleDrag(e, prop)}
+      onDragStart={(e) => onHandleDrag(e, prop)} // Handles the start of dragging event
     >
       <div className="row justify-content-center">
         <div className="col-6">
@@ -27,7 +28,9 @@ const FavProperty = ({ onRemove, prop, onHandleDrag }) => {
               <b>{prop.type}</b> - ${prop.price}
             </span>
           </div>
-          <div className="row d-flex justify-content-end">
+          <div
+            className="row d-flex justify-content-end" // A flexbox row that aligns its content to the right
+          >
             <button
               className="btn btn-danger btn-sm align-self-end mt-5 mb-1 me-3"
               style={{ maxWidth: "50%" }}

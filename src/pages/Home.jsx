@@ -4,21 +4,20 @@ import Favourites from "../components/Favourites";
 import Navbar from "../components/Navbar";
 import Slogan from "../components/Slogan";
 import Footer from "../components/Footer";
-import AdvancedSearch from "../components/AdvancedSearch";
-import "./../Index.css";
-// Home component to manage state and render the other components
+
+// Home component to render the other child components
 const Home = () => {
+  // Initialize state for favourites using localStorage data or an empty array
   var initialState = JSON.parse(localStorage.getItem("favourites")) ?? []; // Nullish coalescing operator
-  const [favourites, setFavourites] = useState(initialState); // State to hold all favourite properties
+  const [favourites, setFavourites] = useState(initialState);
 
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
-  }, [favourites]);
+  }, [favourites]); // Dependency array ensures this runs only when favourites change
 
-  // Function to add a property to the favourites list
   const addToFavourites = (property) => {
     if (!favourites.find((fav) => fav.id === property.id)) {
-      setFavourites([...favourites, property]); // Spread operator is used
+      setFavourites([...favourites, property]); // Add property to favourites using Spread operator
     }
   };
 
@@ -32,7 +31,7 @@ const Home = () => {
         <div className="row justify-content-around">
           <div className="col-lg-4 col-sm-12">
             <Favourites favourites={favourites} setFavourites={setFavourites} />{" "}
-            {/* Pass favourites list to Favourites component */}
+            {/*Pass favourites and setFavourites as props to Favourites component */}
           </div>
           <div className="col-lg-8 col-sm-12">
             <Properties
@@ -40,7 +39,7 @@ const Home = () => {
               favourites={favourites}
               setFavourites={setFavourites}
             />{" "}
-            {/* Pass addToFavourites function to Properties */}
+            {/* Pass the addToFavourites function and state props to Properties */}
           </div>
         </div>
       </div>

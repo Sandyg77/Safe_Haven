@@ -1,5 +1,5 @@
 .footer {
-  background-color: #031b4c;
+  background-color: #000000;
   color: #fff;
   padding: 20px 0;
   display: flex;
@@ -31,12 +31,13 @@
 }
 
 .link {
-  color: #22a4e1;
+  color: #63e4e7;
   text-decoration: none;
 }
 
 .link:hover {
   text-decoration: underline;
+  color: #22a4e1;
 }
 
 .copyright {

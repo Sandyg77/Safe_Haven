@@ -5,7 +5,7 @@ import { FaTrashCan } from "react-icons/fa6";
 const Favourites = ({ favourites, setFavourites }) => {
   // Handling drop event
   const handleDrop = (e) => {
-    e.preventDefault(); // prevents the defauult handling of drop event
+    e.preventDefault();
     const property = JSON.parse(e.dataTransfer.getData("property")); // To retrieve the dropped property data
 
     // Checking for duplicates
@@ -20,7 +20,6 @@ const Favourites = ({ favourites, setFavourites }) => {
     e.dataTransfer.setData("removeProperty", JSON.stringify(property)); // Pass property as JSON
   };
 
-  // Preventing default drag over
   const handleDragOver = (e) => e.preventDefault();
 
   // Handle removal of a property
@@ -28,7 +27,7 @@ const Favourites = ({ favourites, setFavourites }) => {
     setFavourites(favourites.filter((fav) => fav.id !== propertyId));
   };
 
-  // Clear all button
+  // Clear all icon function
   const clearAll = () => {
     setFavourites([]); // Reset favourites to an empty array
   };
@@ -71,7 +70,7 @@ const Favourites = ({ favourites, setFavourites }) => {
           favourites.map((property) => (
             <FavProperty
               onRemove={handleRemove}
-              prop={property}
+              prop={property} // Passes the property data to FavProperty
               onHandleDrag={handleDragStart}
             />
           ))

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/Footer.module.css";
+import { FaFacebook, FaTwitterSquare, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -26,13 +27,13 @@ const Footer = () => {
           <p>Phone: +44 123 456 7890</p>
         </div>
 
-        {/* Copyright */}
+        {/* Follow us  */}
         <div className={styles.section}>
           <h3>Follow Us</h3>
           <p>
-            Facebook <br />
-            Twitter <br />
-            Instagram
+            Facebook <FaFacebook /> <br />
+            Twitter <FaTwitterSquare /> <br />
+            Instagram <FaInstagram />
           </p>
         </div>
       </div>

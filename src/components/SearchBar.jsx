@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa"; // Import FontAwesome search icon
+import { FaSearch } from "react-icons/fa";
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // State to track the search term entered by the user
 
-  // Handle input change
+  // Function to update the searchTerm state whenever the input value changes
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  // Call onSearch when search is performed
+  // Function to trigger the search action by calling the `onSearch` prop
   const handleSearch = () => {
     onSearch(searchTerm);
   };
