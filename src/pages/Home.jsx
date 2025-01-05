@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Slogan from "../components/Slogan";
 import Footer from "../components/Footer";
 import AdvancedSearch from "../components/AdvancedSearch";
-
+import "./../Index.css";
 // Home component to manage state and render the other components
 const Home = () => {
   var initialState = JSON.parse(localStorage.getItem("favourites")) ?? []; // Nullish coalescing operator
@@ -26,7 +26,7 @@ const Home = () => {
     <div>
       {" "}
       <Navbar />
-      <div className="container mt-4">
+      <div className="container pt-4 body">
         <Slogan />
         <br /> <br />
         <div className="row justify-content-around">
