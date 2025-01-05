@@ -93,12 +93,12 @@ const Properties = ({ onAddToFavourites, favourites, setFavourites }) => {
       {/* Search Components */}
       <SearchBar onSearch={handleSimpleSearch} /> {/* Simple Search Bar */}
       <AdvancedSearch onSearch={handleSearch} /> {/* Advanced Search */}
-      <h1>
+      <h1 style={{ marginBottom: "60px" }}>
         <strong>Available Properties</strong>
       </h1>
       <div
         className="container"
-        style={{ maxHeight: "600px", overflowY: "scroll" }}
+        style={{ maxHeight: "600px", overflowY: "scroll", marginTop: "-30px" }}
       >
         <div className="row justify-content-start mt-5">
           {/* Checks whether data is available before rendering */}

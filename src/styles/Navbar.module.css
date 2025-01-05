@@ -8,6 +8,7 @@ body {
 
 .navContainer {
   display: flex;
+  background-color: black;
 }
 
 .logo {
@@ -19,6 +20,7 @@ body {
 .siteName {
   margin-top: 15px;
   font-size: 3rem;
+  color: white;
 }
 
 .view-property {
