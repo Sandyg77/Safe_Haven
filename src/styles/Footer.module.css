@@ -1,0 +1,49 @@
+.footer {
+  background-color: #000000;
+  color: #fff;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.section {
+  flex: 1;
+  padding: 0 20px;
+  margin-right: 20px;
+}
+
+.section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.section p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.link {
+  color: #63e4e7;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #22a4e1;
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 20px;
+  width: 100%;
+  font-size: 1rem;
+  color: #fff;
+}
