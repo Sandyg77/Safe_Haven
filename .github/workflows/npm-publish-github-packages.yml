@@ -3,6 +3,11 @@
 
 name: Node.js Package
 
+permissions:
+  contents: write # Allows pushing changes to the repository
+  pages: write # Required for GitHub Pages deployment
+  id-token: write # Required for authentication
+
 on:
   push:
     branches: ["main"]
