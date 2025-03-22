@@ -5,6 +5,8 @@
   "type": "module",
   "homepage": "https://sandyg77.github.io/Safe_Haven/",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b main -d build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
